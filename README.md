@@ -17,7 +17,7 @@ Usage example:
 Compose a view from a single scene.
 
 ```js
-  // expects scene/cube.js or scene/cube/cube.js to exist
+  // expects scene/cube.js or scene/cube/index.js to exist
   scene('cube')
 
   // same scene but with some additional options (these are passed right through
@@ -25,12 +25,16 @@ Compose a view from a single scene.
   scene('cube', {distance: 5.0, extent: 1.0})
 ```
 
-Compose a scene with a postprocessing effect.
+Compose different views with and without postprocessing effect.
 
 ```js
-  fx('blur', {amount:0.3}
-    , scene('cube')
-    )
+  let comps = 
+    { scene('cube')
+    , fx('blur', {amount:0.3}
+      , scene('cube')
+      )
+    }
+
 ```
 
 Transition between 'cube' and 'sphere' scenes using 'fade'.
