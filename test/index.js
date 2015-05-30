@@ -1,46 +1,68 @@
 'use strict'
 
-const expect = require('chai').expect
-const comp   = require('../index')
+const expect  = require('chai').expect
+const compose = require('../index')
 
 
-describe('compose', function() {
-  let scene
-  let fx    = comp.load('fixtures/fx')
-  let trans = comp.load('fixtures/transition')
+describe('lucy-compose', function() {
+  let scene = compose.load('fixtures/scene')
+  let fx    = compose.load('fixtures/fx')
+  let trans = compose.load('fixtures/transition')
 
   describe('#load', function() {
-    it('should #load scenes in a directory', function() {
-      scene = comp.load('fixtures/scene')
+    it('should create a loader', function() {
       expect(scene).to.be.a('function')
     })
-  }) // #foo
+  }) // #load
+  
+  describe('loader', function() {
 
-  describe('comp function', function() {
-    it('should return scenes', function() {
+    it('should return scene proxy', function() {
       let bing = scene('bing')
-      expect(bing).to.be.an('object')
+      expect(bing.ready).to.be.an('object')
+      expect(bing.ready.then).to.be.a('function')
+    })
+
+    it('should compose with sub-scenes', function(done) {
+      fx('blur', scene('bing')).ready.then(function(comp) {
+        expect(bing).to.be.an('object')
+        expect(bing.render).to.be.a('function')
+        done()
+      })
     })
   })
 
-  describe('a Scene', function() {
-    it('should respond to render', function() {
-      let bing = scene('bing')
-      expect(bing.render).to.be.a('function')
+  describe('scene', function() {
+    it('should respond to render', function(done) {
+      scene('bing').ready.then(function(bing) {
+        console.log('bing ready', bing)
+        expect(bing.render).to.be.a('function')
+        done()
+      })
     })
 
-    it('should call render on sub-scenes', function() {
-      let bing = scene('bing')
-      let comp = fx('blur', scene('bing'))
-      let time = Math.random()
-      comp.render(time)
-      expect(bing.scene.last_time).to.equal(time)
+    it('BB should render with sub-scenes', function(done) {
+      fx('blur', scene('bing')).ready.then(function(comp) {
+        let time = Math.random()
+        let target = {}
+        comp.render(time, target)
+        expect(target.result).to.equal('~BING~')
+        done()
+      })
     })
-  })
 
-  describe('compositions', function() {
+    it('should render with options in sub-scenes', function(done) {
+      fx('blur', scene('bing')).ready.then(function(comp) {
+        let time = Math.random()
+        let target = {}
+        comp.render(time, target)
+        expect(target.result).to.equal('xxxx')
+        done()
+      })
+    })
+
     it('should handle multiple instances', function() {
     })
-  })
+  }) // #load
 
-}) // lucy-live
+}) // lucy-compose

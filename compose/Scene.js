@@ -1,46 +1,48 @@
 /*
-  # Scene proxy
+  # Scene
 
-  The Scene is a wrapper around the actual code and acts as proxy to enable
-  async code reload.
+  The Scene TODO
 
 */
 'use strict'
-const live = require('lucy-live')
+const SceneProxy  = require('./SceneProxy')
 
-const Scene = function(name, loader) {
-  // Code not yet loaded
-  this.scene = null
-  live.require(`./${name}`, loader.path, function(scene) {
-    // if the scene has a cleanup function, run it now
-    this.scene = scene
-    // if the scene has a reload function, run it now
-    if (this.scene.reload) {
-      this.scene.reload()
-    }
-    this.scene.setup(this.setup_args)
-  })
-}
-
-// This can be called before the actual scene is loaded.
-Scene.prototype.setup = function(args) {
-  this.setup_args = args
-  if (this.scene) {
-    this.scene.setup(this.setup_args)
-  }
-}
-
-const defaultRender = function(time, target) {
-  // FIXME: render black image
-}
-
-Scene.prototype.render = function(time, target) {
-  if (this.scene) {
-    this.scene.render(time, target)
-  } else {
-    console.log(`Scene '${this.name}' not loaded yet. Rendering black image.`)
-    defaultRender(time, target)
-  }
+const Scene = function(options) {
+  let self = this
+  self.loaded = true
+  for(let k in options) { self[k] = options[k] }
 }
 
 module.exports = Scene
+
+Scene.prototype.setup = function() {
+  this.ready()
+}
+
+Scene.prototype.ready = function() {
+  let err = new Error('scene.ready() can only be called from inside setup function.')
+  this.error_message = err
+  throw err
+}
+
+Scene.prototype.error = function(m) {
+  // Save error until we call _setup
+  let err = new Error(m)
+  this.error_value = err
+  throw err
+}
+
+Scene.prototype._setup = function(resolve, reject) {
+  this.ready = function() {
+    resolve(this)
+  }
+  this.error = function(err) {
+    reject(err)
+  }
+
+  if (this.error_value) {
+    let e = this.error_value
+    delete this.error_value
+    this.error(e)
+  }
+}
