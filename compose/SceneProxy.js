@@ -18,7 +18,9 @@ const SceneProxy = function(name, loader) {
     self.ready_reject  = reject
   })
 
-  console.log(`Creating scene ${loader.path}/${name}.`)
+  // self.ready.then(function(o) {
+  //   console.log(name, 'READY')
+  // })
 
   // Code not yet loaded
   self.loaded = new Promise(function(resolve, reject) {
@@ -34,8 +36,6 @@ const SceneProxy = function(name, loader) {
       if (scene.reload) {
         scene.reload()
       }
-
-      console.log(`Loaded scene ${name}.`)
 
       // The scene is ready
       resolve(scene)

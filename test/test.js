@@ -1,8 +1,8 @@
 'use strict'
 
-const expect  = require('chai').expect
+require('chai').use(require('chai-as-promised')).should()
 const compose = require('../index')
-
+const Scene   = require('../compose/Scene')
 
 describe('lucy-compose', function() {
   let scene = compose.load('fixtures/scene')
@@ -11,44 +11,41 @@ describe('lucy-compose', function() {
 
   describe('#load', function() {
     it('should create a loader', function() {
-      expect(scene).to.be.a('function')
+      scene.should.be.a('function')
     })
   }) // #load
   
   describe('loader', function() {
 
     it('should return scene proxy', function() {
-      let bing = scene('bing')
-      expect(bing.ready).to.be.an('object')
-      expect(bing.ready.then).to.be.a('function')
+      scene('bing').ready.should
+        .be.an.instanceof(Promise)
     })
 
     it('should compose with sub-scenes', function(done) {
-      fx('blur', scene('bing')).ready.then(function(comp) {
-        expect(bing).to.be.an('object')
-        expect(bing.render).to.be.a('function')
-        done()
-      })
+      fx('blur', scene('bing')).ready.should.eventually
+        .be.an.instanceof(Scene)
+        .have.property('render')
+        .notify(done)
     })
   })
 
   describe('scene', function() {
     it('should respond to render', function(done) {
-      scene('bing').ready.then(function(bing) {
-        console.log('bing ready', bing)
-        expect(bing.render).to.be.a('function')
-        done()
-      })
+      scene('bing').ready.should.eventually
+        .have.property('render')
+        .that.is.a('function')
+        .notify(done)
     })
 
-    it('BB should render with sub-scenes', function(done) {
+    it('should render with sub-scenes', function(done) {
       fx('blur', scene('bing')).ready.then(function(comp) {
         let time = Math.random()
         let target = {}
         comp.render(time, target)
-        expect(target.result).to.equal('~BING~')
+        target.result.should.to.equal('~BING~')
         done()
-      })
+      }).catch(function(e) {done(e)})
     })
 
     it('should render with options in sub-scenes', function(done) {
@@ -56,12 +53,13 @@ describe('lucy-compose', function() {
         let time = Math.random()
         let target = {}
         comp.render(time, target)
-        expect(target.result).to.equal('xxxx')
+        target.result.should.equal('~BING~')
         done()
-      })
+      }).catch(function(e) {done(e)})
     })
 
     it('should handle multiple instances', function() {
+      // TODO
     })
   }) // #load
 

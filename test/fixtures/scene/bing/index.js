@@ -22,3 +22,4 @@ self.render = function(time, target) {
   // Write our operation in `target`.
   target.result = self.message
 }
+
