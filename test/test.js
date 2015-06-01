@@ -14,6 +14,12 @@ describe('lucy-compose', function() {
       scene.should.be.a('function')
     })
   }) // #load
+
+  describe('#load', function() {
+    it('should return Scene', function() {
+      compose.Scene.should.equal(Scene)
+    })
+  }) // #load
   
   describe('loader', function() {
 

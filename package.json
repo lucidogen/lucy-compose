@@ -24,7 +24,7 @@
     }
   ],
   "bugs": {
-    "url": "https://github.com/lucidogen/live/issues"
+    "url": "https://github.com/lucidogen/lucy-compose/issues"
   },
   "devDependencies": {
     "chai": "^2.3.0",
