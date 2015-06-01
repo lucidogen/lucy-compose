@@ -6,8 +6,8 @@
 const caller = require('caller')
 const lpath  = require('path')
 const fs     = require('fs')
-const SceneFolder = require('./compose/SceneFolder')
-const Scene  = require('./compose/Scene')
+const SceneFolder = require('./lib/SceneFolder')
+const Scene  = require('./lib/Scene')
 
 const slice = Array.prototype.slice
 

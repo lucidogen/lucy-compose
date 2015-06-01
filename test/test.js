@@ -2,7 +2,7 @@
 
 require('chai').use(require('chai-as-promised')).should()
 const compose = require('../index')
-const Scene   = require('../compose/Scene')
+const Scene   = require('../lib/Scene')
 
 describe('lucy-compose', function() {
   let scene = compose.load('fixtures/scene')

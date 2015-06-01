@@ -1,5 +1,5 @@
 'use strict'
-const Scene = require('../../../../compose/Scene')
+const Scene = require('../../../../lib/Scene')
 
 // This is kept between code reload (executed only once)
 if (!exports.loaded) {
