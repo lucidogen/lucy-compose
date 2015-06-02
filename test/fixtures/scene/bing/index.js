@@ -12,9 +12,7 @@ if (!exports.loaded) {
 const self = module.exports
 
 self.setup = function(options) {
-  if (options) {
-    self.message = options.message || self.message
-  }
+  self.message = options.message || self.message
   self.ready()
 }
 

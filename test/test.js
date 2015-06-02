@@ -64,6 +64,20 @@ describe('lucy-compose', function() {
       }).catch(function(e) {done(e)})
     })
 
+    it('should pass default options in all scenes', function(done) {
+      fx('options').ready.then(function(comp) {
+        comp.options.should.deep.equal({})
+        done()
+      }).catch(function(e) {done(e)})
+    })
+
+    it('should pass options in all scenes', function(done) {
+      fx('options', 'passed options').ready.then(function(comp) {
+        comp.options.should.equal('passed options')
+        done()
+      }).catch(function(e) {done(e)})
+    })
+
     it('should handle multiple instances', function() {
       // TODO
     })

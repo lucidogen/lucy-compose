@@ -14,11 +14,8 @@ if (!exports.loaded) {
 const self = module.exports
 
 self.setup = function(options, sub) {
-  if (!sub) {
-    sub = options
-  } else {
-    self.blur = options.blur || self.blur
-  }
+  self.blur = options.blur || self.blur
+
   sub.ready.then(function(scene) {
     self.sub = scene
     self.ready()
