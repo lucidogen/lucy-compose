@@ -35,6 +35,10 @@ describe('ShaderEFfect', function() {
       s.should.respondTo('setup')
     })
 
+    it('should have ready function', function() {
+      s.should.respondTo('ready')
+    })
+
     it('should have render function', function() {
       s.should.respondTo('render')
     })
