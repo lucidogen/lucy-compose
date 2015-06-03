@@ -6,8 +6,10 @@
 const caller = require('caller')
 const lpath  = require('path')
 const fs     = require('fs')
-const SceneFolder = require('./lib/SceneFolder')
-const Scene  = require('./lib/Scene')
+const SceneFolder   = require('./lib/SceneFolder')
+const Scene         = require('./lib/Scene')
+const ShaderEffect  = require('./lib/ShaderEffect')
+const WebGLRenderer = require('./lib/WebGLRenderer')
 
 const slice = Array.prototype.slice
 
@@ -22,7 +24,9 @@ exports.load = function(path) {
   }
 }
 
-exports.Scene = Scene
+exports.Scene         = Scene
+exports.WebGLRenderer = WebGLRenderer
+exports.ShaderEffect  = ShaderEffect
 
 /////////////////////////////// Private
 const makePath = function(caller_p) {
