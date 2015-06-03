@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "caller": "^1.0.0",
-    "lucy-live": "lucidogen/lucy-live"
+    "lucy-live": "lucidogen/lucy-live",
+    "three": "^0.71.0"
   }
 }
