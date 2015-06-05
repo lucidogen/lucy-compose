@@ -60,7 +60,7 @@ In order to be composed, scenes should implement the following methods:
 ## Installation
 
 ```shell
-  npm install lucidogen/lucy-compose --save
+  npm install --save git+ssh://git@bitbucket.org/lucidogen/lucy-compose.git
 ```
 
 ## Tests
