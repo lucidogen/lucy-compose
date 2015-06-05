@@ -16,7 +16,7 @@ self.setup = function(options) {
   self.ready()
 }
 
-self.render = function(time, target) {
+self.render = function(context, target) {
   // Write our operation in `target`.
   target.result = self.message
 }

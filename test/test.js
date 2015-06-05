@@ -46,9 +46,9 @@ describe('lucy-compose', function() {
 
     it('should render with sub-scenes', function(done) {
       fx('blur', scene('bing')).ready.then(function(comp) {
-        let time = Math.random()
+        let context = {time: Math.random()}
         let target = {}
-        comp.render(time, target)
+        comp.render(context, target)
         target.result.should.to.equal('~BING~')
         done()
       }).catch(function(e) {done(e)})
@@ -56,9 +56,9 @@ describe('lucy-compose', function() {
 
     it('should render with options in sub-scenes', function(done) {
       fx('blur', scene('bing')).ready.then(function(comp) {
-        let time = Math.random()
+        let context = {time: Math.random()}
         let target = {}
-        comp.render(time, target)
+        comp.render(context, target)
         target.result.should.equal('~BING~')
         done()
       }).catch(function(e) {done(e)})

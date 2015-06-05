@@ -13,7 +13,7 @@ self.setup = function(options) {
   self.ready()
 }
 
-self.render = function(time, target) {
+self.render = function(context, target) {
   target.result = self.options.toString()
 }
 

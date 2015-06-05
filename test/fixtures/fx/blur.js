@@ -22,10 +22,10 @@ self.setup = function(options, sub) {
   })
 }
 
-self.render = function(time, target) {
+self.render = function(context, target) {
   // Ask sub-scene to write result in our target
   if (self.sub) {
-    self.sub.render(time, self.target)
+    self.sub.render(context, self.target)
   } else {
     // default image (use previous target result)
   }
