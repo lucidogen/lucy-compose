@@ -33,7 +33,6 @@
   },
   "dependencies": {
     "caller": "^1.0.0",
-    "lucy-app": "git+ssh://git@bitbucket.org/lucidogen/lucy-app.git",
     "lucy-live": "git+ssh://git@bitbucket.org/lucidogen/lucy-live.git",
     "three": "^0.71.0"
   }
