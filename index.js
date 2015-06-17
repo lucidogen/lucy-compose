@@ -10,6 +10,7 @@ const SceneFolder     = require('./lib/SceneFolder')
 const Scene           = require('./lib/Scene')
 const ShaderEffect    = require('./lib/ShaderEffect')
 const RecursiveShader = require('./lib/RecursiveShader')
+const MixShader       = require('./lib/MixShader')
 const WebGLRenderer   = require('./lib/WebGLRenderer')
 
 const slice = Array.prototype.slice
@@ -35,6 +36,7 @@ exports.Scene           = Scene
 exports.WebGLRenderer   = WebGLRenderer
 exports.ShaderEffect    = ShaderEffect
 exports.RecursiveShader = RecursiveShader
+exports.MixShader       = MixShader
 
 /////////////////////////////// Private
 const makePath = function(caller_p) {
