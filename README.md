@@ -5,14 +5,16 @@ Part of [lucidity](http://lucidity.io) project.
 ## Agnostic scene composition tool
 
 Compose complexe scenes by writing simple composition functions. The
-framework has some Scene sub-classes to work with THREE.js but it can be used
-to compose about anything (see tests for examples). This whole library is just a
-convenient way to load 'effects', call `setup` on them and `render` with support
-for live coding and async loading.
+framework can be used to compose about anything (see tests for examples). This
+whole library is just a convenient way to load 'effects', call `setup` on them
+and `render` with support for live coding and async loading.
 
 Asynchronous scene loading and setup uses promises and ensures that scenes down
 the graph hierarchy are entirely loaded before they are inserted in parent
 objects through the call to `setup`.
+
+There is a set of composition helpers for THREE.js using lucy-compose:
+[lucy-three](http://github.com/lucidogen/lucy-three).
 
 First declare sources by specifying a folder.
 
@@ -78,8 +80,7 @@ In order to be composed, scenes should implement the following methods:
        hierarchy and can be anything. Usually, this is an object containing
        globa state information (time, uniforms, etc).
 
-Look at the helpers for THREE.js 'lib/MixShader', 'lib/ShaderEffect' or at the
-fixtures in 'test/fixtures/scenes/bing' to get an idea of Scene definition.
+Look at 'test/fixtures/scenes/bing' to get an idea of a simple Scene definition.
 
 ## Installation
 

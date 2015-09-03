@@ -1,5 +1,5 @@
 {
-  "name": "lucy-live",
+  "name": "lucy-compose",
   "version": "0.1.1",
   "description": "Agnostic scene composition tool.",
   "main": "index.js",
@@ -26,7 +26,9 @@
     "mocha": "~1.16.2"
   },
   "dependencies": {
-    "caller": "^1.0.0"
+    "caller": "^1.0.0",
+    "chai-as-promised": "^5.1.0",
+    "lucy-live": "^0.1.1"
   },
   "homepage": "https://github.com/lucidogen/lucy-compose#readme",
   "directories": {
