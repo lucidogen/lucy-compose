@@ -1,6 +1,6 @@
 {
   "name": "lucy-compose",
-  "version": "0.1.1",
+  "version": "0.1.0",
   "description": "Agnostic scene composition tool.",
   "main": "index.js",
   "license": "MIT",
