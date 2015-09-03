@@ -7,7 +7,6 @@ const Scene   = require('../lib/Scene')
 describe('lucy-compose', function() {
   let scene = compose.load('fixtures/scene')
   let fx    = compose.load('fixtures/fx')
-  let trans = compose.load('fixtures/transition')
 
   describe('#load', function() {
     it('should create a loader', function() {
