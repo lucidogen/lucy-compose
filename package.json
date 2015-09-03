@@ -1,6 +1,6 @@
 {
   "name": "lucy-compose",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Agnostic scene composition tool.",
   "main": "index.js",
   "license": "MIT",
@@ -23,11 +23,11 @@
   },
   "devDependencies": {
     "chai": "^2.3.0",
+    "chai-as-promised": "^5.1.0",
     "mocha": "~1.16.2"
   },
   "dependencies": {
     "caller": "^1.0.0",
-    "chai-as-promised": "^5.1.0",
     "lucy-live": "^0.1.1"
   },
   "homepage": "https://github.com/lucidogen/lucy-compose#readme",
